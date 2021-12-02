@@ -7,7 +7,7 @@ _ROOT_CAP="+25G"
 loadkeys ru
 #Установка шрифта с поддержкой русского языка
 setfont cyr-sun16
-#Установка обновление времени через интернет
+#Установка обновления времени через интернет
 timedatectl set-ntp true
 #Установка часового пояса
 timedatectl set-timezone Europe/Moscow
