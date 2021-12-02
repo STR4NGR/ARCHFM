@@ -8,4 +8,4 @@ timedatectl set-ntp true
 timedatectl set-timezone Europe/Moscow
 timedatectl status
 
-echo -e "n\n\n\n\n+4G\n" | fdisk /dev/sda
+echo -e "n\n\n\n\n+4G\nt\n1\n82\nw" | fdisk /dev/sda
