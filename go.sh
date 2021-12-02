@@ -3,9 +3,6 @@ echo -e "Welcome to install ArchLinux by \033[32mFM \033[0m"
 _SWAP_CAP="+4G"
 _ROOT_CAP="+25G"
 
-#Замена стандартный шрифт
-setfont latarcyreb-sun16
-
 #Установка обновление времени через интернет
 timedatectl set-ntp true
 #Установка часового пояса
