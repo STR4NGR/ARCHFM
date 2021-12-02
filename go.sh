@@ -6,8 +6,6 @@ setfont cyr-sun16
 
 timedatectl set-ntp true
 timedatectl set-timezone Europe/Moscow
-timedate status
+timedatectl status
 
-fdisk /dev/sda
-n
-p
+echo -e "n\n\n\n\n+4G\n" | fdisk /dev/sda
