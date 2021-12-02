@@ -3,6 +3,10 @@ echo -e "Welcome to install ArchLinux by \033[32mFM \033[0m"
 _SWAP_CAP="+4G"
 _ROOT_CAP="+25G"
 
+#Добавление русской раскладки клавиатуры
+loadkeys ru
+#Установка шрифта с поддержкой русского языка
+setfont cyr-sun16
 #Установка обновление времени через интернет
 timedatectl set-ntp true
 #Установка часового пояса
