@@ -13,8 +13,6 @@ timedatectl set-ntp true
 timedatectl set-timezone Europe/Moscow
 
 #Удаление всех существующих разделов
-res=$(ls -l)
-echo "$res"
-echo $(echo "$res"|wc -l)
+echo -e "d\nd\nd\nd\nw" | fdisk /dev/sda
 #Создание разделов на жестком диске
 echo -e "n\n\n\n\n${_SWAP_CAP}\nt\n82\nn\n\n\n\n${_ROOT_CAP}\nn\n\n\n\n\nw" | fdisk /dev/sda
