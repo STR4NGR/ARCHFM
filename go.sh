@@ -1,7 +1,7 @@
 #!/bin/bash
 echo -e "Welcome to install ArchLinux by \033[32mFM \033[0m"
 _SWAP_CAP="+4G"
-_ROOT_CAP="+25G"
+_ROOT_CAP="+100G"
 
 #Добавление русской раскладки клавиатуры
 loadkeys ru
