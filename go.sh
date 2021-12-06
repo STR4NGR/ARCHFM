@@ -18,7 +18,10 @@ echo -e "o\n w\n" | fdisk /dev/sda
 echo -e "n\n\n\n\n${_SWAP_CAP}\nt\n82\nn\n\n\n\n${_ROOT_CAP}\nn\n\n\n\n\nw" | fdisk /dev/sda
 #Форматирование раздела swap
 mkfs.ext4 /dev/sda1
+yes | mkfs *
 #Форматирование раздела root
 mkfs.ext4 /dev/sda2
+yes | mkfs *
 #Форматирование раздела home
 mkfs.ext4 /dev/sda3
+yes | mkfs *
