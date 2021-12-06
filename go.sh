@@ -17,11 +17,8 @@ echo -e "o\n w\n" | fdisk /dev/sda
 #Создание разделов на жестком диске
 echo -e "n\n\n\n\n${_SWAP_CAP}\nt\n82\nn\n\n\n\n${_ROOT_CAP}\nn\n\n\n\n\nw" | fdisk /dev/sda
 #Форматирование раздела swap
-mkfs.ext4 /dev/sda1
-yes | mkfs *
+yes | mkfs.ext4 /dev/sda1
 #Форматирование раздела root
-mkfs.ext4 /dev/sda2
-yes | mkfs *
+yes | mkfs.ext4 /dev/sda2
 #Форматирование раздела home
-mkfs.ext4 /dev/sda3
-yes | mkfs *
+yes | mkfs.ext4 /dev/sda3
