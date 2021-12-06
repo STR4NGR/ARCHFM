@@ -19,6 +19,6 @@ echo -e "n\n\n\n\n${_SWAP_CAP}\nt\n82\nn\n\n\n\n${_ROOT_CAP}\nn\n\n\n\n\nw" | fd
 #Форматирование раздела swap
 echo y | mkfs.ext4 /dev/sda1
 #Форматирование раздела root
-echo yes | mkfs.ext4 /dev/sda2
+echo y | mkfs.ext4 /dev/sda2
 #Форматирование раздела home
-echo yes | mkfs.ext4 /dev/sda3
+echo y | mkfs.ext4 /dev/sda3
