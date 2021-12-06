@@ -16,9 +16,18 @@ timedatectl set-timezone Europe/Moscow
 echo -e "o\n w\n" | fdisk /dev/sda
 #Создание разделов на жестком диске
 echo -e "n\n\n\n\n${_SWAP_CAP}\nt\n82\nn\n\n\n\n${_ROOT_CAP}\nn\n\n\n\n\nw" | fdisk /dev/sda
+
 #Форматирование раздела swap
 echo y | mkfs.ext4 /dev/sda1
 #Форматирование раздела root
 echo y | mkfs.ext4 /dev/sda2
 #Форматирование раздела home
 echo y | mkfs.ext4 /dev/sda3
+
+#Монтируем папку root и создаем папку home
+mount /dev/sda2 /mnt
+mkdir /mnt/home
+mount /dev/sda3 /mnt/home
+
+#Установка
+echo yes | pacstrap -i /mnt base linux linux-firmware sudo nano
