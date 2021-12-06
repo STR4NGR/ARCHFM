@@ -30,4 +30,4 @@ mkdir /mnt/home
 mount /dev/sda3 /mnt/home
 
 #Установка
-echo "\n" | pacstrap -i /mnt base linux linux-firmware sudo nano
+echo 2 | pacstrap -i /mnt base linux linux-firmware sudo nano
