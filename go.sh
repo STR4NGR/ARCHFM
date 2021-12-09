@@ -40,4 +40,5 @@ echo -e "Y" | pacstrap -i /mnt base
 genfstab -U -p /mnt >> /mnt/etc/fstab
 
 #Изменение корневого каталога
-echo -e "/mnt" | arch-chroot
+#!/bin/bash
+arch-chroot
