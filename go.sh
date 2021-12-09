@@ -41,6 +41,6 @@ genfstab -U -p /mnt >> /mnt/etc/fstab
 
 #Изменение корневого каталога
 #!/bin/bash
-arch-chroot /mnt
+echo -e "/mnt" | arch-chroot 
 #Установка часового пояса
-echo -e "ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime"
+#echo -e "ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime"
