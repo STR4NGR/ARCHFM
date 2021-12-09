@@ -41,30 +41,3 @@ genfstab -U -p /mnt >> /mnt/etc/fstab
 
 #Изменение корневого каталога
 echo -e "/mnt" | arch-chroot
-
-#Установка часового пояса
-ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime
-echo "ln"
-#Установка времени BIOS
-hwclock --systohc
-
-#Настройка языка
-echo "en_US.UTF-8 UTF-8\nru_RU.UTF-8 UTF-8" > /etc/locale.gen
-locale-gen
-touch /etc/locale.conf
-echo "LANG=ru_RU.UTF-8" > /etc/locale.conf
-
-#Настройка компьютера
-echo ${_PC_NAME} > /etc/hostname
-echo "127.0.1.1 localhost.localdomain ${_PC_NAME}" | sed 'a\# See hosts(5) for details'
-echo "fm_11_mk" | passwd
-
-pacman -S grub
-pacman -S os-prober
-
-grub-install /dev/sda
-grub-mkconfig -o /boot/grub/grub.cfg
-
-exit
-umount -R /mnt
-reboot
