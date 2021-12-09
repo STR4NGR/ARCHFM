@@ -41,4 +41,4 @@ genfstab -U -p /mnt >> /mnt/etc/fstab
 
 #Изменение корневого каталога
 #!/bin/bash
-arch-chroot
+arch-chroot /mnt
