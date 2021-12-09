@@ -40,9 +40,7 @@ echo -e "Y" | pacstrap -i /mnt base
 genfstab -U -p /mnt >> /mnt/etc/fstab
 
 #Изменение корневого каталога
-arch-chroot /mnt
-echo "arch-chroot"
-#Breakpoint
+echo -e "/mnt" | arch-chroot
 
 #Установка часового пояса
 ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime
