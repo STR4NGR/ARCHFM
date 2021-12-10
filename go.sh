@@ -59,8 +59,8 @@ arch-chroot /mnt sed -i "s/# See hosts(5) for details/127.0.1.1 localhost.locald
 arch-chroot /mnt echo "root:${_ROOT_PASS}" | chpasswd
 
 #Установка и настройка GRUB загрузчика
-arch-chroot /mnt pacman -S grub
-arch-chroot /mnt pacman -S os-prober
+arch-chroot /mnt echo -e "Y" | pacman -S grub
+arch-chroot /mnt echo -e "Y" | pacman -S os-prober
 arch-chroot /mnt grub-install /dev/sda
 arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
 
