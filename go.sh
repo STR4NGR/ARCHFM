@@ -55,6 +55,7 @@ arch-chroot /mnt echo "LANG=ru_RU.UTF-8" > /etc/locale.conf
 arch-chroot /mnt echo ${_PC_NAME} > /etc/hostname
 arch-chroot /mnt echo "127.0.1.1 localhost.localdomain ${_PC_NAME}" | sed 'a\# See hosts(5) for details'
 arch-chroot /mnt echo "fm_11_mk" | passwd
+arch-chroot /mnt echo "fm_11_mk" | passwd
 
 #pacman -S grub
 #pacman -S os-prober
