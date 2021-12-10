@@ -54,7 +54,7 @@ arch-chroot /mnt echo "LANG=ru_RU.UTF-8" > /etc/locale.conf
 
 #Настройка компьютера
 arch-chroot /mnt touch /etc/hostname
-arch-chroot /mnt sed -i "1i/${_PC_NAME}" > /etc/hostname
+arch-chroot /mnt sed -i "1i/${_PC_NAME}" /etc/hostname
 arch-chroot /mnt sed -i "s/# See hosts(5) for details/127.0.1.1 localhost.localdomain ${_PC_NAME}/g" /etc/hosts
 arch-chroot /mnt echo "root:${_ROOT_PASS}" | chpasswd
 
