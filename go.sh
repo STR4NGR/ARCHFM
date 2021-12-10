@@ -39,22 +39,22 @@ echo -e "Y" | pacstrap -i /mnt base
 #Генерация файла fstab
 genfstab -U -p /mnt >> /mnt/etc/fstab
 
-#Изменение корневого каталога и установка часового пояса
+#Установка часового пояса
 arch-chroot /mnt ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime  
 
 #Установка времени BIOS
-#hwclock --systohc
+arch-chroot /mnt hwclock --systohc
 
 #Настройка языка
-#echo "en_US.UTF-8 UTF-8\nru_RU.UTF-8 UTF-8" > /etc/locale.gen
-#locale-gen
-#touch /etc/locale.conf
-#echo "LANG=ru_RU.UTF-8" > /etc/locale.conf
+arch-chroot /mnt echo "en_US.UTF-8 UTF-8\nru_RU.UTF-8 UTF-8" > /etc/locale.gen
+arch-chroot /mnt locale-gen
+arch-chroot /mnt touch /etc/locale.conf
+arch-chroot /mnt echo "LANG=ru_RU.UTF-8" > /etc/locale.conf
 
 #Настройка компьютера
-#echo ${_PC_NAME} > /etc/hostname
-#echo "127.0.1.1 localhost.localdomain ${_PC_NAME}" | sed 'a\# See hosts(5) for details'
-#echo "fm_11_mk" | passwd
+arch-chroot /mnt echo ${_PC_NAME} > /etc/hostname
+arch-chroot /mnt echo "127.0.1.1 localhost.localdomain ${_PC_NAME}" | sed 'a\# See hosts(5) for details'
+arch-chroot /mnt echo "fm_11_mk" | passwd
 
 #pacman -S grub
 #pacman -S os-prober
