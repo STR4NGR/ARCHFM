@@ -58,12 +58,12 @@ arch-chroot /mnt echo "${_PC_NAME}" >> /mnt/etc/hostname
 arch-chroot /mnt sed -i "s/# See hosts(5) for details/127.0.1.1 localhost.localdomain ${_PC_NAME}/g" /etc/hosts
 arch-chroot /mnt echo "root:${_ROOT_PASS}" | chpasswd
 
-#pacman -S grub
-#pacman -S os-prober
+#Установка и настройка GRUB загрузчика
+arch-chroot /mnt pacman -S grub
+arch-chroot /mnt pacman -S os-prober
+arch-chroot /mnt grub-install /dev/sda
+arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
 
-#grub-install /dev/sda
-#grub-mkconfig -o /boot/grub/grub.cfg
-
-#exit
-#umount -R /mnt
-#reboot
+exit
+umount -R /mnt
+reboot
