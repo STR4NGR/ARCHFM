@@ -62,9 +62,3 @@ arch-chroot /mnt echo "root:${_ROOT_PASS}" | chpasswd
 #Установка и настройка GRUB загрузчика
 arch-chroot /mnt echo -e "Y" | pacman -S grub
 arch-chroot /mnt echo -e "Y" | pacman -S os-prober
-arch-chroot /mnt grub-install /dev/sda
-arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
-
-exit
-umount -R /mnt
-reboot
