@@ -60,5 +60,5 @@ arch-chroot /mnt echo "root:${_ROOT_PASS}" | chpasswd
 
 #Граб так и не установлился + нужно сделать TODO
 #Установка и настройка GRUB загрузчика
-arch-chroot /mnt echo -e "Y" | pacman -S grub
-arch-chroot /mnt echo -e "Y" | pacman -S os-prober
+arch-chroot /mnt echo "Y" | pacman -S grub
+arch-chroot /mnt echo "Y" | pacman -S os-prober
