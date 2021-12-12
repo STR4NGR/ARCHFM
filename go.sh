@@ -56,14 +56,11 @@ arch-chroot /mnt echo "LANG=ru_RU.UTF-8" > /etc/locale.conf
 arch-chroot /mnt touch /etc/hostname
 arch-chroot /mnt echo "${_PC_NAME}" >> /mnt/etc/hostname
 arch-chroot /mnt sed -i "s/# See hosts(5) for details/127.0.1.1 localhost.localdomain ${_PC_NAME}/g" /etc/hosts
-arch-chroot /mnt echo "root:${_ROOT_PASS}" | chpasswd
+arch-chroot /mnt echo "fm:${_ROOT_PASS}" | chpasswd
 
 #Нужно сделать TODO
 #Установка и настройка GRUB загрузчика
 pacstrap /mnt grub
 arch-chroot /mnt grub-install /dev/sda
 arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg 
-arch-chroot /mnt sed -i "s/# GRUB boot loader configuration /GRUB_DISABLE_OS_PROBER=false/g" /etc/default/grub
-#arch-chroot /mnt pacstrap /mnt os-prober
-#arch-chroot /mnt grub-install /dev/sda
-#arch-chroot /mnt echo "Y" | pacman -S os-prober
+arch-chroot /mnt sed -i "s/# GRUB boot loader configuration/GRUB_DISABLE_OS_PROBER=false/g" /etc/default/grub
