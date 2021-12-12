@@ -52,9 +52,9 @@ arch-chroot /mnt touch /etc/locale.conf
 arch-chroot /mnt echo "LANG=ru_RU.UTF-8" > /etc/locale.conf
 
 #Настройка компьютера
-echo "\033[32mВведите пароль root пользователя: \033[0m"
+echo -e "\033[32mВведите пароль root пользователя: \033[0m"
 arch-chroot /mnt passwd
-echo "\033[32mВведите имя компьютера: \033[0m"
+echo -e  "\033[32mВведите имя компьютера: \033[0m"
 read _PC_NAME
 arch-chroot /mnt touch /etc/hostname
 arch-chroot /mnt echo "${_PC_NAME}" >> /mnt/etc/hostname
