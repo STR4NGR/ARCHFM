@@ -63,7 +63,7 @@ arch-chroot /mnt echo "root:${_ROOT_PASS}" | chpasswd
 pacstrap /mnt grub
 arch-chroot /mnt grub-install /dev/sda
 arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg 
-arch-chroot /mnt sed -i "s/# GRUB boot loader configuration /GRUB_DISABLE_OS_PROBER=false/g" /mnt/etc/default/grub
+arch-chroot /mnt sed -i "s/# GRUB boot loader configuration /GRUB_DISABLE_OS_PROBER=false/g" /etc/default/grub
 #arch-chroot /mnt pacstrap /mnt os-prober
 #arch-chroot /mnt grub-install /dev/sda
 #arch-chroot /mnt echo "Y" | pacman -S os-prober
