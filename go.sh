@@ -6,17 +6,11 @@ echo -e "Welcome to install ArchLinux by \033[32mFM \033[0m"
 _SWAP_CAP="+4G"
 _ROOT_CAP="+100G"
 _PC_NAME="fmlab-12"
-#_ROOT_PASS="fm_11_mk"
 
 #Добавление русской раскладки клавиатуры
 loadkeys ru                             
 #Установка шрифта с поддержкой русского языка
 setfont cyr-sun16
-
-#Диалог с пользователем
-echo "Введите пароль root пользователя"
-read -s _ROOT_PASS
-
 #Установка обновления времени через интернет
 timedatectl set-ntp true
 #Установка часового пояса
@@ -61,7 +55,8 @@ arch-chroot /mnt echo "LANG=ru_RU.UTF-8" > /etc/locale.conf
 arch-chroot /mnt touch /etc/hostname
 arch-chroot /mnt echo "${_PC_NAME}" >> /mnt/etc/hostname
 arch-chroot /mnt sed -i "s/# See hosts(5) for details/127.0.1.1 localhost.localdomain ${_PC_NAME}/g" /etc/hosts
-arch-chroot /mnt echo -e "$_ROOT_PASS\n$_ROOT_PASS\n" | passwd
+echo "Введите пароль root пользователя"
+arch-chroot /mnt passwd
 #arch-chroot /mnt echo "$_ROOT_PASS" | passwd --stdin
 #arch-chroot /mnt echo fm:${_ROOT_PASS} | chpasswd
 
