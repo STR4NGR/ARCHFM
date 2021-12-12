@@ -56,7 +56,8 @@ arch-chroot /mnt echo "LANG=ru_RU.UTF-8" > /etc/locale.conf
 arch-chroot /mnt touch /etc/hostname
 arch-chroot /mnt echo "${_PC_NAME}" >> /mnt/etc/hostname
 arch-chroot /mnt sed -i "s/# See hosts(5) for details/127.0.1.1 localhost.localdomain ${_PC_NAME}/g" /etc/hosts
-arch-chroot /mnt echo fm:${_ROOT_PASS} | chpasswd
+arch-chroot /mnt ${_ROOT_PASS} | passwd
+#arch-chroot /mnt echo fm:${_ROOT_PASS} | chpasswd
 
 #Нужно сделать TODO
 #Установка и настройка GRUB загрузчика
