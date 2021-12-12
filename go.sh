@@ -60,7 +60,8 @@ arch-chroot /mnt echo "root:${_ROOT_PASS}" | chpasswd
 
 #Нужно сделать TODO
 #Установка и настройка GRUB загрузчика
-arch-chroot /mnt pacstrap /mnt grub
+pacstrap /mnt grub
+pacstrap /mnt os-prober
 #arch-chroot /mnt pacstrap /mnt os-prober
 #arch-chroot /mnt grub-install /dev/sda
 #arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
