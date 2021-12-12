@@ -34,7 +34,7 @@ mkdir /mnt/home
 mount /dev/sda3 /mnt/home
 
 #Установка системы
-pacstrap /mnt base linux linux-firmware
+pacstrap /mnt base linux linux-firmware sudo nano
 
 #Генерация файла fstab
 genfstab -U -p /mnt >> /mnt/etc/fstab
