@@ -58,7 +58,7 @@ echo -e  "\033[32mВведите имя компьютера: \033[0m"
 read _PC_NAME
 arch-chroot /mnt touch /etc/hostname
 arch-chroot /mnt echo "${_PC_NAME}" >> /mnt/etc/hostname
-arch-chroot /mnt sed -i "s/# See hosts(5) for details/127.0.1.1 localhost.localdomain ${_PC_NAME}/g" /etc/hosts
+arch-chroot /mnt sed -i "s/# See hosts(5) for details/127.0.0.1 localhost \n ::1 localhost \n 127.0.1.1 ${_PC_NAME}.localdomain ${_PC_NAME}/g" /etc/hosts
 
 #arch-chroot /mnt echo "$_ROOT_PASS" | passwd --stdin
 #arch-chroot /mnt echo fm:${_ROOT_PASS} | chpasswd
