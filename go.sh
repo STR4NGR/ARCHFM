@@ -58,7 +58,7 @@ arch-chroot /mnt echo "${_PC_NAME}" >> /mnt/etc/hostname
 arch-chroot /mnt sed -i "s/# See hosts(5) for details/127.0.1.1 localhost.localdomain ${_PC_NAME}/g" /etc/hosts
 arch-chroot /mnt echo "root:${_ROOT_PASS}" | chpasswd
 
-#Граб так и не установлился + нужно сделать TODO
+#Нужно сделать TODO
 #Установка и настройка GRUB загрузчика
-echo -e "Y" | pacstrap -i /mnt grub
+arch-chroot /mnt echo -e "Y" | pacstrap -i /mnt grub
 #arch-chroot /mnt echo "Y" | pacman -S os-prober
