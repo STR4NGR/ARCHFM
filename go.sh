@@ -35,7 +35,7 @@ mkdir /mnt/home
 mount /dev/sda3 /mnt/home
 
 #Установка системы
-echo -e "Y" | pacstrap -i /mnt base
+pacstrap /mnt base linux linux-firmware
 
 #Генерация файла fstab
 genfstab -U -p /mnt >> /mnt/etc/fstab
@@ -61,8 +61,8 @@ arch-chroot /mnt echo "root:${_ROOT_PASS}" | chpasswd
 #Нужно сделать TODO
 #Установка и настройка GRUB загрузчика
 pacstrap /mnt grub
-arch-chroot /mnt "/dev/sda" >> grub-install 
+arch-chroot /mnt grub-install /dev/sda
+arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg 
 #arch-chroot /mnt pacstrap /mnt os-prober
 #arch-chroot /mnt grub-install /dev/sda
-#arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
 #arch-chroot /mnt echo "Y" | pacman -S os-prober
