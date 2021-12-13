@@ -60,10 +60,6 @@ arch-chroot /mnt touch /etc/hostname
 arch-chroot /mnt echo "${_PC_NAME}" >> /mnt/etc/hostname
 arch-chroot /mnt sed -i "s/# See hosts(5) for details/127.0.0.1 localhost\n::1 localhost\n127.0.0.1 ${_PC_NAME}.localdomain ${_PC_NAME}/g" /etc/hosts
 
-function test {
-    echo "test"
-}
-
 #Нужно сделать TODO
 #Установка и настройка GRUB загрузчика
 pacstrap /mnt grub
@@ -71,3 +67,7 @@ arch-chroot /mnt grub-install /dev/sda
 arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg 
 arch-chroot /mnt sed -i "s/# GRUB boot loader configuration/GRUB_DISABLE_OS_PROBER=false/g" /etc/default/grub
 umount -R /mnt
+
+function test {
+    echo "test"
+}
