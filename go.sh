@@ -1,11 +1,9 @@
 #!/bin/bash
 #TODO Сделать выбор таблицы разметки диска
 #TODO Спросить про имя компьютера
-#TODO Работа со своп файлом
 echo -e "Welcome to install ArchLinux by \033[32mFM \033[0m"
 _SWAP_CAP="+4G"
 _ROOT_CAP="+100G"
-#_PC_NAME="fmlab-12"
 
 #Добавление русской раскладки клавиатуры
 loadkeys ru                             
@@ -62,8 +60,9 @@ arch-chroot /mnt touch /etc/hostname
 arch-chroot /mnt echo "${_PC_NAME}" >> /mnt/etc/hostname
 arch-chroot /mnt sed -i "s/# See hosts(5) for details/127.0.0.1 localhost\n::1 localhost\n127.0.0.1 ${_PC_NAME}.localdomain ${_PC_NAME}/g" /etc/hosts
 
-#arch-chroot /mnt echo "$_ROOT_PASS" | passwd --stdin
-#arch-chroot /mnt echo fm:${_ROOT_PASS} | chpasswd
+function test {
+    echo "test"
+}
 
 #Нужно сделать TODO
 #Установка и настройка GRUB загрузчика
