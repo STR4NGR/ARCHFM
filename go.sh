@@ -40,25 +40,25 @@ pacstrap /mnt base linux linux-firmware sudo nano
 genfstab -U -p /mnt >> /mnt/etc/fstab
 
 #Установка часового пояса
-arch-chroot /mnt ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime  
+arch-chroot /mnt /bin/bash ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime  
 
 #Установка времени BIOS
-arch-chroot /mnt hwclock --systohc
+arch-chroot /mnt /bin/bash hwclock --systohc
 
 #Настройка языка
-arch-chroot /mnt echo "en_US.UTF-8 UTF-8\nru_RU.UTF-8 UTF-8" > /etc/locale.gen
-arch-chroot /mnt locale-gen
-arch-chroot /mnt touch /etc/locale.conf
-arch-chroot /mnt echo "LANG=ru_RU.UTF-8" > /etc/locale.conf
+arch-chroot /mnt /bin/bash echo "en_US.UTF-8 UTF-8\nru_RU.UTF-8 UTF-8" > /etc/locale.gen
+arch-chroot /mnt /bin/bash locale-gen
+arch-chroot /mnt /bin/bash touch /etc/locale.conf
+arch-chroot /mnt /bin/bash echo "LANG=ru_RU.UTF-8" > /etc/locale.conf
 
 #Настройка компьютера
 echo -e "\033[32mВведите пароль root пользователя: \033[0m"
-arch-chroot /mnt passwd
+arch-chroot /mnt /bin/bash passwd
 echo -e  "\033[32mВведите имя компьютера: \033[0m"
 read _PC_NAME
-arch-chroot /mnt touch /etc/hostname
-arch-chroot /mnt echo "${_PC_NAME}" >> /mnt/etc/hostname
-arch-chroot /mnt sed -i "s/# See hosts(5) for details/127.0.0.1 localhost\n::1 localhost\n127.0.0.1 ${_PC_NAME}.localdomain ${_PC_NAME}/g" /etc/hosts
+arch-chroot /mnt /bin/bash touch /etc/hostname
+arch-chroot /mnt /bin/bash echo "${_PC_NAME}" >> /mnt/etc/hostname
+arch-chroot /mnt /bin/bash sed -i "s/# See hosts(5) for details/127.0.0.1 localhost\n::1 localhost\n127.0.0.1 ${_PC_NAME}.localdomain ${_PC_NAME}/g" /etc/hosts
 
 #arch-chroot /mnt echo "$_ROOT_PASS" | passwd --stdin
 #arch-chroot /mnt echo fm:${_ROOT_PASS} | chpasswd
@@ -66,7 +66,7 @@ arch-chroot /mnt sed -i "s/# See hosts(5) for details/127.0.0.1 localhost\n::1 l
 #Нужно сделать TODO
 #Установка и настройка GRUB загрузчика
 pacstrap /mnt grub
-arch-chroot /mnt grub-install /dev/sda
-arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg 
-arch-chroot /mnt sed -i "s/# GRUB boot loader configuration/GRUB_DISABLE_OS_PROBER=false/g" /etc/default/grub
+arch-chroot /mnt /bin/bash grub-install /dev/sda
+arch-chroot /mnt /bin/bash grub-mkconfig -o /boot/grub/grub.cfg 
+arch-chroot /mnt /bin/bash sed -i "s/# GRUB boot loader configuration/GRUB_DISABLE_OS_PROBER=false/g" /etc/default/grub
 umount -R /mnt
