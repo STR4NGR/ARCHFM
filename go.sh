@@ -29,6 +29,8 @@ echo y | mkfs.ext4 /dev/sda2
 echo y | mkfs.ext4 /dev/sda3
 
 #Монтируем папку root и создаем папку home
+mkswap /dev/sda1
+swapon /dev/sda1
 mount /dev/sda2 /mnt
 mkdir /mnt/home
 mount /dev/sda3 /mnt/home
