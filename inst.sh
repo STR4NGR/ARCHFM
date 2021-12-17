@@ -100,7 +100,7 @@ case "$1" in
     exit 1
     else
     mbr_new_parts
-    install
+    install $1
     mbr_grub
     exit_install
     fi
