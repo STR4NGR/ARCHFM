@@ -1,7 +1,7 @@
 #!/bin/bash
 #Part 1: install the Arch Linux
-_SWAP = "+4G"
-_ROOT = "+100G"
+SWAP = "+4G"
+ROOT = "+100G"
 # Выбор таблицы разметки диска перед установкой
 while [ -n "$1" ]
 do
