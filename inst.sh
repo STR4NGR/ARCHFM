@@ -102,6 +102,7 @@ case "$1" in
     mbr_new_parts
     install $1
     mbr_grub
+    get_root_pass
     exit_install
     fi
     ;;
