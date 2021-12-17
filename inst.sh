@@ -50,7 +50,7 @@ function get_root_pass() {
     arch-chroot /mnt passwd    
 }
 
-function pre_install() {
+function pre_install(){
 # Добавление русской раскладки клавиатуры
     loadkeys ru                             
 # Установка шрифта с поддержкой русского языка
