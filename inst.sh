@@ -88,7 +88,8 @@ case "$1" in
     echo -e "Имя компьютера $1"
     fi
     ;;
--mbr) 
+-mbr)
+    pre_install 
     echo -e "Добро пожаловать в установку ArchLinux by \033[7mFM\033[0m"
     echo -e "Выбрана разметка диска: \033[7m GPT \033[0m" 
     shift 1
@@ -97,7 +98,6 @@ case "$1" in
     echo -e "Проверьте ввод команды: \033[7minstall.sh -gpt имя_компьютера\033[0m"
     exit 1
     else
-    pre_install
     mbr_new_parts
     install
     mbr_grub
