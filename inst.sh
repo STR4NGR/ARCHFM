@@ -90,6 +90,7 @@ function mbr_grub {
 
 function gpt_grub {
 # Установка и настройка GRUB загрузчика
+    #TODO не работает gpt grub
     pacstrap /mnt grub efibootmgr
     mkdir /boot/efi
     mount /dev/sda1 /boot/efi 
