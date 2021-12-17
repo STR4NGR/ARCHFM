@@ -39,6 +39,27 @@ function mbr_new_parts {
     mount /dev/sda3 /mnt/home
 }
 
+function gpt_new_parts {
+# Удаление всех существующих разделов
+    echo -e "o\n w\n" | fdisk /dev/sda   
+# Создание разделов на жестком диске 1(UEFI) 2(SWAP) 3(ROOT) 4(HOME)
+    echo -e "n\n\n\n\n+1G\nn\n\n\n\n${_SWAP}\nt\n82\nn\n\n\n\n${_ROOT}\nn\n\n\n\n\nw" | fdisk /dev/sda
+# Форматирование раздела uefi
+    echo y | mkfs.fat -F32 /dev/sda1
+# Форматирование раздела swap
+    echo y | mkfs.ext4 /dev/sda2
+# Форматирование раздела root
+    echo y | mkfs.ext4 /dev/sda3
+# Форматирование раздела home
+    echo y | mkfs.ext4 /dev/sda4
+# Монтируем папку root и создаем папку home
+    mkswap /dev/sda2
+    swapon /dev/sda2
+    mount /dev/sda3 /mnt
+    mkdir /mnt/home
+    mount /dev/sda4 /mnt/home
+}
+
 function install {
 # Установка системы
     pacstrap /mnt base linux linux-firmware sudo nano dhcpcd
@@ -67,6 +88,16 @@ function mbr_grub {
     arch-chroot /mnt sed -i "s/# GRUB boot loader configuration/GRUB_DISABLE_OS_PROBER=false/g" /etc/default/grub
 }
 
+function gpt_grub {
+# Установка и настройка GRUB загрузчика
+    pacstrap /mnt grub efibootmgr
+    mkdir /boot/efi
+    mount /dev/sda1 /boot/efi 
+    arch-chroot /mnt grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory=/boot/efi --removable
+    arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
+    arch-chroot /mnt sed -i "s/# GRUB boot loader configuration/GRUB_DISABLE_OS_PROBER=false/g" /etc/default/grub
+}
+
 function exit_install {
     umount -R /mnt
     reboot
@@ -85,7 +116,11 @@ case "$1" in
     echo -e "Проверьте ввод команды: \033[7minstall.sh -gpt имя_компьютера\033[0m"
     exit 1
     else
-    echo -e "Имя компьютера $1"
+    gpt_new_parts
+    install $1
+    gpt_grub
+    get_root_pass
+    exit_install
     fi
     ;;
 -mbr)
