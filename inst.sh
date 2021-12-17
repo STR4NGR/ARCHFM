@@ -1,7 +1,8 @@
 #!/bin/bash
 #Part 1: install the Arch Linux
-SWAP = "+4G"
-ROOT = "+100G"
+_SWAP="+4G"
+_ROOT="+100G"
+_PCNAME="FMLAB"
 # Выбор таблицы разметки диска перед установкой
 while [ -n "$1" ]
 do
@@ -27,9 +28,10 @@ case "$1" in
     echo -e "Проверьте ввод команды: \033[7minstall.sh -gpt имя_компьютера\033[0m"
     exit 1
     else
+    $_PCNAME = $1
     pre_install
     mbr_new_parts
-    install($1)
+    install
     mbr_grub
     exit_install
     fi
@@ -78,7 +80,7 @@ function mbr_new_parts {
     mount /dev/sda3 /mnt/home
 }
 
-function install() {
+function install {
 # Установка системы
     pacstrap /mnt base linux linux-firmware sudo nano dhcpcd
 # Генерация файла fstab
@@ -94,8 +96,8 @@ function install() {
     arch-chroot /mnt echo "LANG=ru_RU.UTF-8" > /etc/locale.conf
 # Настройка компьютера
     arch-chroot /mnt touch /etc/hostname
-    arch-chroot /mnt echo "$1" >> /mnt/etc/hostname
-    arch-chroot /mnt sed -i "s/# See hosts(5) for details/127.0.0.1 localhost\n::1 localhost\n127.0.0.1 $1.localdomain $1/g" /etc/hosts
+    arch-chroot /mnt echo "${_PCNAME}" >> /mnt/etc/hostname
+    arch-chroot /mnt sed -i "s/# See hosts(5) for details/127.0.0.1 localhost\n::1 localhost\n127.0.0.1 ${_PCNAME}ocaldomain ${_PCNAME}/g" /etc/hosts
 }
 
 function mbr_grub {
