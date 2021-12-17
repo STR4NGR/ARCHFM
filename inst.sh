@@ -45,12 +45,12 @@ esac
 shift
 done
 
-function get_root_pass {
+function get_root_pass() {
     echo -e "\033[7mВведите пароль root пользователя: \033[0m"
     arch-chroot /mnt passwd    
 }
 
-function pre_install {
+function pre_install() {
 # Добавление русской раскладки клавиатуры
     loadkeys ru                             
 # Установка шрифта с поддержкой русского языка
@@ -61,7 +61,7 @@ function pre_install {
     timedatectl set-timezone Europe/Moscow    
 }
 
-function mbr_new_parts {
+function mbr_new_parts() {
 # Удаление всех существующих разделов
     echo -e "o\n w\n" | fdisk /dev/sda
 # Создание разделов на жестком диске
@@ -80,7 +80,7 @@ function mbr_new_parts {
     mount /dev/sda3 /mnt/home
 }
 
-function install {
+function install() {
 # Установка системы
     pacstrap /mnt base linux linux-firmware sudo nano dhcpcd
 # Генерация файла fstab
@@ -100,7 +100,7 @@ function install {
     arch-chroot /mnt sed -i "s/# See hosts(5) for details/127.0.0.1 localhost\n::1 localhost\n127.0.0.1 ${_PCNAME}ocaldomain ${_PCNAME}/g" /etc/hosts
 }
 
-function mbr_grub {
+function mbr_grub() {
 # Установка и настройка GRUB загрузчика
     pacstrap /mnt grub
     arch-chroot /mnt grub-install /dev/sda
@@ -108,7 +108,7 @@ function mbr_grub {
     arch-chroot /mnt sed -i "s/# GRUB boot loader configuration/GRUB_DISABLE_OS_PROBER=false/g" /etc/default/grub
 }
 
-function exit_install {
+function exit_install() {
     umount -R /mnt
     reboot
 }
