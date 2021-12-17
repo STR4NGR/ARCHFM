@@ -55,8 +55,8 @@ function install {
     arch-chroot /mnt echo "LANG=ru_RU.UTF-8" > /etc/locale.conf
 # Настройка компьютера
     arch-chroot /mnt touch /etc/hostname
-    arch-chroot /mnt echo "${_PCNAME}" >> /mnt/etc/hostname
-    arch-chroot /mnt sed -i "s/# See hosts(5) for details/127.0.0.1 localhost\n::1 localhost\n127.0.0.1 ${_PCNAME}ocaldomain ${_PCNAME}/g" /etc/hosts
+    arch-chroot /mnt echo "$1" >> /mnt/etc/hostname
+    arch-chroot /mnt sed -i "s/# See hosts(5) for details/127.0.0.1 localhost\n::1 localhost\n127.0.0.1 $1.localdomain $1/g" /etc/hosts
 }
 
 function mbr_grub {
@@ -91,7 +91,8 @@ case "$1" in
 -mbr)
     pre_install 
     echo -e "Добро пожаловать в установку ArchLinux by \033[7mFM\033[0m"
-    echo -e "Выбрана разметка диска: \033[7m GPT \033[0m" 
+    echo -e "Выбрана разметка диска: \033[7m MBR \033[0m"
+    sleep 2 
     shift 1
     if [ -z "$1" ]; then 
     echo -e "\033[31mОшибка:\033[0m не задано имя компьютера "
