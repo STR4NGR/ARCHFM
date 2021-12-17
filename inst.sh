@@ -108,8 +108,10 @@ while [ -n "$1" ]
 do
 case "$1" in
 -gpt) 
+    pre_install 
     echo -e "Добро пожаловать в установку ArchLinux by \033[7mFM\033[0m"
-    echo -e "Выбрана разметка диска: \033[7m GPT \033[0m" 
+    echo -e "Выбрана разметка диска: \033[7m GPT \033[0m"
+    sleep 10
     shift 1
     if [ -z "$1" ]; then 
     echo -e "\033[31mОшибка:\033[0m не задано имя компьютера "
