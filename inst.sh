@@ -121,7 +121,7 @@ case "$1" in
     else
     gpt_new_parts
     install $1
-    gpt_grub
+    #gpt_grub
     #get_root_pass
     #exit_install
     fi
