@@ -78,6 +78,7 @@ function install {
     arch-chroot /mnt touch /etc/hostname
     arch-chroot /mnt echo "$1" >> /mnt/etc/hostname
     arch-chroot /mnt sed -i "s/# See hosts(5) for details/127.0.0.1 localhost\n::1 localhost\n127.0.0.1 $1.localdomain $1/g" /etc/hosts
+    arch-chroot /mnt systemctl enable dhcpcd.service
 }
 
 function mbr_grub {
