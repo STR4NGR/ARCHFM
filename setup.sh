@@ -14,6 +14,26 @@ echo -e "\nY\nY\nY" | pacman -S xfce4 lightdm lightdm-gtk-greeter
 echo "exec startxfce4" > ~/.xinitrc
 systemctl enable lightdm
 # Установка менеджера окон
-echo "exec i3"  > ~/.xinitrc
-echo -e "\nY" | pacman -S i3
-startx
+echo "exec xfwm4"  > ~/.xinitrc
+echo -e "\nY" | pacman -S xfwm4
+# Установка TexLive
+cd ~/Desktop
+git clone https://aur.archlinux.org/texlive-installer.git
+cd texlive-installer
+makepkg -si
+cd ..
+# Установка Anaconda
+git clone https://aur.archlinux.org/anaconda.git
+cd anaconda
+makepkg -si
+cd .. 
+# Установка Git
+echo -e "\nY" | pacman -S git
+# Установка FireFox
+echo -e "\nY" | pacman -S firefox
+echo -e "\nY" | pacman -S base-devel
+echo -e "\nY" | pacman -S code
+echo -e "\nY" | pacman -S maxima
+echo -e "\nY" | pacman -S sagemath
+echo -e "\nY" | pacman -S notepadqq
+reboot
