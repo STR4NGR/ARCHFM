@@ -92,8 +92,8 @@ function gpt_grub {
 # Установка и настройка GRUB загрузчика
     #TODO не работает gpt grub
     pacstrap /mnt grub efibootmgr
-    mkdir /boot/efi
-    mount /dev/sda1 /boot/efi 
+    arch-chroot /mnt mkdir /boot/efi
+    arch-chroot /mnt mount /dev/sda1 /boot/efi 
     arch-chroot /mnt grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory=/boot/efi --removable
     arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
     arch-chroot /mnt sed -i "s/# GRUB boot loader configuration/GRUB_DISABLE_OS_PROBER=false/g" /etc/default/grub
@@ -121,7 +121,7 @@ case "$1" in
     else
     gpt_new_parts
     install $1
-    #gpt_grub
+    gpt_grub
     #get_root_pass
     #exit_install
     fi
