@@ -16,6 +16,17 @@ systemctl enable lightdm
 # Установка менеджера окон
 echo "exec xfwm4"  > ~/.xinitrc
 echo -e "\nY" | pacman -S xfwm4
+# Установка Git
+echo -e "\nY" | pacman -S git
+# Установка FireFox
+echo -e "\nY" | pacman -S firefox
+echo -e "\nY" | pacman -S base-devel
+echo -e "\nY" | pacman -S openssh
+echo -e "\nY" | pacman -S libreoffice-still
+echo -e "\nY" | pacman -S code
+echo -e "\nY" | pacman -S maxima
+echo -e "\nY" | pacman -S sagemath
+echo -e "\nY" | pacman -S notepadqq
 # Установка TexLive
 cd ~/Desktop
 git clone https://aur.archlinux.org/texlive-installer.git
@@ -27,14 +38,4 @@ git clone https://aur.archlinux.org/anaconda.git
 cd anaconda
 makepkg -si
 cd .. 
-# Установка Git
-echo -e "\nY" | pacman -S git
-# Установка FireFox
-echo -e "\nY" | pacman -S firefox
-echo -e "\nY" | pacman -S base-devel
-echo -e "\nY" | pacman -S openssh
-echo -e "\nY" | pacman -S code
-echo -e "\nY" | pacman -S maxima
-echo -e "\nY" | pacman -S sagemath
-echo -e "\nY" | pacman -S notepadqq
 reboot
