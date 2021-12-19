@@ -10,14 +10,15 @@ passwd fm
 # Установка драйверов
 echo -e "\nY\nY\nY\nY\nY" | pacman -S pulseaudio pulseaudio-alsa xorg xorg-xinit xorg-server
 # Установка графического окружения
-echo -e "\nY\nY\nY\nY" | pacman -S xfce4 lightdm lightdm-gtk-greeter wget
+echo -e "\nY\nY\nY" | pacman -S xfce4 lightdm lightdm-gtk-greeter
 echo "exec startxfce4" > ~/.xinitrc
 systemctl enable lightdm
 # Установка менеджера окон
-echo "exec xfwm4"  > ~/.xinitrc
-echo -e "\nY" | pacman -S xfwm4
+echo "exec i3"  > ~/.xinitrc
+echo -e "\nY" | pacman -S i3
 # Установка Git
 echo -e "\nY" | pacman -S git
+echo -e "\nY" | pacman -S wget
 # Установка FireFox
 echo -e "\nY" | pacman -S firefox
 echo -e "\nY" | pacman -S base-devel
