@@ -32,6 +32,7 @@ echo -e "\nY" | pacman -S git
 # Установка FireFox
 echo -e "\nY" | pacman -S firefox
 echo -e "\nY" | pacman -S base-devel
+echo -e "\nY" | pacman -S openssh
 echo -e "\nY" | pacman -S code
 echo -e "\nY" | pacman -S maxima
 echo -e "\nY" | pacman -S sagemath
