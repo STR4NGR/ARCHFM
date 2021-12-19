@@ -10,7 +10,7 @@ passwd fm
 # Установка драйверов
 echo -e "\nY\nY\nY\nY\nY" | pacman -S pulseaudio pulseaudio-alsa xorg xorg-xinit xorg-server
 # Установка графического окружения
-echo -e "\nY\nY\nY" | pacman -S xfce4 lightdm lightdm-gtk-greeter
+echo -e "\nY\nY\nY\nY" | pacman -S xfce4 lightdm lightdm-gtk-greeter wget
 echo "exec startxfce4" > ~/.xinitrc
 systemctl enable lightdm
 # Установка менеджера окон
