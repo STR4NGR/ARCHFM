@@ -121,8 +121,8 @@ case "$1" in
     gpt_new_parts
     install $1
     gpt_grub
-    get_root_pass
-    exit_install
+    #get_root_pass
+    #exit_install
     fi
     ;;
 -mbr)
