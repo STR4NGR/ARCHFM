@@ -9,7 +9,7 @@ useradd -m student
 sed -i "s/## sudoers file./%wheel ALL=(ALL) ALL/g" /etc/sudoers
 echo -e "\033[7mВведите пароль для пользователя fm: \033[0m"
 passwd fm
-if $USER == "root"
+if [[ "$USER" == "root" ]];
 then
     echo -e "\033[7mДля продолжения нужно залогиниться под пользователем fm\033[0m"
     exit 1
