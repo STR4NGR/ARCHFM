@@ -41,12 +41,12 @@ elif [[ "$USER" == "fm" ]]; then
 # Установка TexLive
     git clone https://aur.archlinux.org/texlive-installer.git
     cd texlive-installer
-    makepkg -si
+    makepkg -sic
     cd ..
 # Установка Anaconda
     git clone https://aur.archlinux.org/anaconda.git
     cd anaconda
-    makepkg -si
+    makepkg -sic
     cd .. 
     reboot
 fi
