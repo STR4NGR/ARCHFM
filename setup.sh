@@ -14,8 +14,8 @@ echo -e "\nY\nY\nY" | pacman -S xfce4 lightdm lightdm-gtk-greeter
 echo "exec startxfce4" > ~/.xinitrc
 systemctl enable lightdm
 # Установка менеджера окон
-echo "exec i3"  > ~/.xinitrc
-echo -e "\nY" | pacman -S i3
+# echo "exec i3"  > ~/.xinitrc
+# echo -e "\nY" | pacman -S i3
 # Установка Git
 echo -e "\nY" | pacman -S git
 echo -e "\nY" | pacman -S wget
