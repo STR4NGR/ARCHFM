@@ -10,9 +10,6 @@ if [[ "$USER" == "root" ]]; then
     sed -i "s/## sudoers file./%wheel ALL=(ALL) ALL/g" /etc/sudoers
     echo -e "\033[7mВведите пароль для пользователя fm: \033[0m"
     passwd fm
-    echo -e "\033[7mДля продолжения нужно залогиниться под пользователем fm\033[0m"
-    exit 1
-elif [[ "$USER" == "fm" ]]; then
 # Установка драйверов
     echo -e "\nY\nY\nY\nY\nY" | pacman -S pulseaudio pulseaudio-alsa xorg xorg-xinit xorg-server
 # Установка графического окружения
@@ -38,6 +35,9 @@ elif [[ "$USER" == "fm" ]]; then
 # Установка Sage
     echo -e "\nY" | pacman -S sagemath
     echo -e "\nY" | pacman -S notepadqq
+    echo -e "\033[7mДля продолжения нужно залогиниться под пользователем fm\033[0m"
+    exit 1
+elif [[ "$USER" == "fm" ]]; then
 # Установка TexLive
     git clone https://aur.archlinux.org/texlive-installer.git
     cd texlive-installer
