@@ -1,8 +1,7 @@
 # Part 2: setup the Arch Linux
 # Установка шрифта с поддержкой русского языка
 setfont cyr-sun16
-if [[ "$USER" == "root" ]];
-then
+if [[ "$USER" == "root" ]]; then
 # Создание пользователя fm
     useradd -m -g users -G wheel -s /bin/bash fm
 # Создание пользователя student
@@ -13,7 +12,7 @@ then
     passwd fm
     echo -e "\033[7mДля продолжения нужно залогиниться под пользователем fm\033[0m"
     exit 1
-else
+elif [[ "$USER" == "fm" ]]; then
 # Установка драйверов
     echo -e "\nY\nY\nY\nY\nY" | pacman -S pulseaudio pulseaudio-alsa xorg xorg-xinit xorg-server
 # Установка графического окружения
