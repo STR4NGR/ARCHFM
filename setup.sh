@@ -1,16 +1,16 @@
 # Part 2: setup the Arch Linux
 # Установка шрифта с поддержкой русского языка
 setfont cyr-sun16
-# Создание пользователя fm
-useradd -m -g users -G wheel -s /bin/bash fm
-# Создание пользователя student
-useradd -m student
-# Назначение пользователю fm прав супер-пользователя
-sed -i "s/## sudoers file./%wheel ALL=(ALL) ALL/g" /etc/sudoers
-echo -e "\033[7mВведите пароль для пользователя fm: \033[0m"
-passwd fm
 if [[ "$USER" == "root" ]];
 then
+# Создание пользователя fm
+    useradd -m -g users -G wheel -s /bin/bash fm
+# Создание пользователя student
+    useradd -m student
+# Назначение пользователю fm прав супер-пользователя
+    sed -i "s/## sudoers file./%wheel ALL=(ALL) ALL/g" /etc/sudoers
+    echo -e "\033[7mВведите пароль для пользователя fm: \033[0m"
+    passwd fm
     echo -e "\033[7mДля продолжения нужно залогиниться под пользователем fm\033[0m"
     exit 1
 else
