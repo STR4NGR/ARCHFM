@@ -23,7 +23,6 @@ echo -e "\nY" | pacman -S openssh
 echo -e "\nY" | pacman -S libreoffice-still
 echo -e "\nY" | pacman -S code
 # Установка Maxima
-echo -e "\nY" | pacman -S maxima
 echo -e "\nY" | pacman -S maxima-share 
 echo -e "\nY" | pacman -S gnuplot-x11 
 echo -e "\nY" | pacman -S xmaxima 
