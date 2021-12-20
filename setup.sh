@@ -42,4 +42,4 @@ git clone https://aur.archlinux.org/anaconda.git
 cd anaconda
 makepkg -si
 cd .. 
-reboot
+#reboot
