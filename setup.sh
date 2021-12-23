@@ -23,15 +23,12 @@ if [[ "$USER" == "root" ]]; then
     echo -e "\nY\nY\nY" | pacman -S xfce4 lightdm lightdm-gtk-greeter
     echo "exec startxfce4" > ~/.xinitrc
     systemctl enable lightdm
-# Установка Git
-    echo -e "\nY" | pacman -S git
     echo -e "\nY" | pacman -S wget
 # Установка FireFox
-    echo -e "\nY" | pacman -S firefox
-    echo -e "\nY" | pacman -S base-devel
+    echo -e "\nY" | pacman -S firefox-i18n-ru
+    echo -e "\nY" | pacman -S --needed git base-devel
     echo -e "\nY" | pacman -S openssh
-    echo -e "\nY" | pacman -S libreoffice-still
-    echo -e "\nY" | pacman -S code
+    echo -e "\nY" | pacman -S libreoffice-still-ru
 # Установка Maxima
     echo -e "\nY" | pacman -S maxima-share 
     echo -e "\nY" | pacman -S gnuplot-x11 
@@ -42,18 +39,32 @@ if [[ "$USER" == "root" ]]; then
 # Установка Sage
     echo -e "\nY" | pacman -S sagemath
     echo -e "\nY" | pacman -S notepadqq
+# Установка TexLive
+    echo -e "\nY" | pacman -S texlive-core
+    echo -e "\nY" | pacman -S texlive-bin
+    echo -e "\nY" | pacman -S texlive-latexextra
+    echo -e "\nY" | pacman -S texlive-lang
+    echo -e "\nY" | pacman -S texlive-bibtexextra
+    echo -e "\nY" | pacman -S texlive-fontsextra
+    echo -e "\nY" | pacman -S texlive-biber
+# Установка TexStudio
+    echo -e "\nY" | pacman -S texstudio 4.1.2-1    
     echo -e "\033[7mДля продолжения нужно залогиниться под пользователем fm\033[0m"
     exit 1
 elif [[ "$USER" == "fm" ]]; then
-# Установка TexLive
-    #git clone https://aur.archlinux.org/texlive-installer.git
-    #cd texlive-installer
-    #makepkg -sic
-    #cd ..
+# Установка Yay
+    git clone https://aur.archlinux.org/yay.git
+    cd yay
+    makepkg -si
+    cd ..
+# Установка Файлового Менеджера
+    echo -e "\n2\nN\nY" | yay -S xfe
+# Установка Visual Studio Code
+    echo -e "\nN\nY" | yay -S visual-studio-code-bin
+    echo -e "\nY\nN\nY" | yay -S python-ptvsd
 # Установка Anaconda
-    #git clone https://aur.archlinux.org/anaconda.git
-    #cd anaconda
-    #makepkg -sic
-    #cd .. 
+    cd ~/Downloads
+    curl -OL https://repo.anaconda.com/archive/Anaconda3-2021.11-Linux-x86_64.sh
+    sh Anaconda3-2021.11-Linux-x86_64.sh
     reboot
 fi
