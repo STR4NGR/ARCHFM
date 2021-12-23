@@ -46,9 +46,9 @@ if [[ "$USER" == "root" ]]; then
     echo -e "\nY" | pacman -S texlive-lang
     echo -e "\nY" | pacman -S texlive-bibtexextra
     echo -e "\nY" | pacman -S texlive-fontsextra
-    echo -e "\nY" | pacman -S texlive-biber
+    echo -e "\nY" | pacman -S biber
 # Установка TexStudio
-    echo -e "\nY" | pacman -S texstudio 4.1.2-1    
+    echo -e "\nY" | pacman -S texstudio
     echo -e "\033[7mДля продолжения нужно залогиниться под пользователем fm\033[0m"
     exit 1
 elif [[ "$USER" == "fm" ]]; then
