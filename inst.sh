@@ -69,13 +69,6 @@ function install {
     arch-chroot /mnt ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime  
 # Установка времени BIOS
     arch-chroot /mnt hwclock --systohc
-# Настройка языка
-    arch-chroot /mnt echo -e "en_US.UTF-8 UTF-8\nru_RU.UTF-8 UTF-8" > /etc/locale.gen
-    arch-chroot /mnt locale-gen
-    arch-chroot /mnt touch /etc/locale.conf
-    arch-chroot /mnt echo "LANG=ru_RU.UTF-8" > /etc/locale.conf
-#Настройка раскладки клавиатуры
-    arch-chroot /mnt echo -e 'Section "InputClass"\nIdentifier "system-keyboard"\nMatchIsKeyboard "on"\nOption "XkbLayout" "us,ru"\nOption "XkbModel" "pc104"\nOption "XkbOptions" "grp:ctrl_shift_toggle"\nEndSection' >> /etc/X11/xorg.conf.d/10-keyborad.conf
 # Настройка компьютера
     arch-chroot /mnt touch /etc/hostname
     arch-chroot /mnt echo "$1" >> /mnt/etc/hostname
