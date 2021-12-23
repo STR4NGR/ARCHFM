@@ -39,14 +39,14 @@ if [[ "$USER" == "root" ]]; then
     exit 1
 elif [[ "$USER" == "fm" ]]; then
 # Установка TexLive
-    git clone https://aur.archlinux.org/texlive-installer.git
-    cd texlive-installer
-    makepkg -sic
-    cd ..
+    #git clone https://aur.archlinux.org/texlive-installer.git
+    #cd texlive-installer
+    #makepkg -sic
+    #cd ..
 # Установка Anaconda
-    git clone https://aur.archlinux.org/anaconda.git
-    cd anaconda
-    makepkg -sic
-    cd .. 
+    #git clone https://aur.archlinux.org/anaconda.git
+    #cd anaconda
+    #makepkg -sic
+    #cd .. 
     reboot
 fi
