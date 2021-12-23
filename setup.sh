@@ -41,6 +41,8 @@ if [[ "$USER" == "root" ]]; then
     echo -e "\nY" | pacman -S notepadqq
 # Установка Jupyter
     echo -e "\nY" | pacman -S jupyterlab
+# Установка PyCharm
+    echo -e "\nY" | pacman -S pycharm-community-edition
 # Установка TexLive
     echo -e "\nY" | pacman -S texlive-core
     echo -e "\nY" | pacman -S texlive-bin
