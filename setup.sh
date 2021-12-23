@@ -58,10 +58,10 @@ elif [[ "$USER" == "fm" ]]; then
     makepkg -si
     cd ..
 # Установка Файлового Менеджера
-    echo -e "\n2\nN\nY" | yay -S xfe
+    echo -e "\n2\nn\nY" | yay -S xfe
 # Установка Visual Studio Code
-    echo -e "\nN\nY" | yay -S visual-studio-code-bin
-    echo -e "\nY\nN\nY" | yay -S python-ptvsd
+    echo -e "\nn\nY" | yay -S visual-studio-code-bin
+    echo -e "\nY\nn\nY" | yay -S python-ptvsd
 # Установка Anaconda
     cd ~/Downloads
     curl -OL https://repo.anaconda.com/archive/Anaconda3-2021.11-Linux-x86_64.sh
