@@ -39,6 +39,8 @@ if [[ "$USER" == "root" ]]; then
 # Установка Sage
     echo -e "\nY" | pacman -S sagemath
     echo -e "\nY" | pacman -S notepadqq
+# Установка Jupyter
+    echo -e "\nY" | pacman -S jupyterlab
 # Установка TexLive
     echo -e "\nY" | pacman -S texlive-core
     echo -e "\nY" | pacman -S texlive-bin
